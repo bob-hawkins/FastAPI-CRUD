@@ -24,15 +24,20 @@ app = FastAPI()
 """
 TODO: Create Users Endpoints
 
-POST /users: Create a new user.
-GET /users/{user_id}: Get details of a specific user.
-PUT /users/{user_id}: Update user information.
-DELETE /users/{user_id}: Delete a user.
+POST /tasks: Create a new task.
+
+-- THIS IS SOME WORK FOR YOU. IMPLEMENT THIS ENDPOINT
+GET /users/{task_id}: Get details of a specific task.
+
+
+PUT /tasks/{task_id}: Update task information.
+DELETE /tasks/{task_id}: Delete a task.
 """
 
 
 
 
+# MORE WORK FOR TO IMPLEMENT
 """
 TODO: Tasks Endpoints
 
@@ -108,7 +113,7 @@ async def edit_task(task_id: str, task: TaskEdit):
         found["status"] = task.status
     
     # await found.save()
-    edit = await task_collection.update_one({"_id": ObjectId(task_id) }, {"$set": found })
+    await task_collection.update_one({"_id": ObjectId(task_id) }, {"$set": found })
     task_edited = await task_collection.find_one({"_id": ObjectId(task_id) })
 
 

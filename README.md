@@ -1,6 +1,9 @@
 # FastAPI CRUD
 This is a simple CRUD (Create, Read, Update, Delete) To-Do List application built with FastAPI and MongoDB using Motor as the async MongoDB driver.
 
+# Why FastAPI
+FastAPI provides a clean and easy-to-use interface for creating APIs. Its design allows developers to write clean, concise, and self-documenting code. The use of Python type hints improves readability and reduces errors.
+
 # Features
 1. Add new tasks
 2. Retrieve all tasks
