@@ -94,13 +94,21 @@ async def edit_task(task_id: str, task: TaskEdit):
     if found is None:
         raise HTTPException(status_code=404, detail="Task with associated id has not been created")
     
+    
     if task.title is None and task.description is None and task.status is None:
         raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="Content to be edited should be supplied")
     
-
+    if task.title is not None:
+        found["title"] = task.title
     
+    if task.description is not None:
+        found["description"] = task.description
     
-    edit = await task_collection.update_one({"_id": ObjectId(task_id) }, {"$set": task.model_dump() })
+    if task.status is not None:
+        found["status"] = task.status
+    
+    # await found.save()
+    edit = await task_collection.update_one({"_id": ObjectId(task_id) }, {"$set": found })
     task_edited = await task_collection.find_one({"_id": ObjectId(task_id) })
 
 
